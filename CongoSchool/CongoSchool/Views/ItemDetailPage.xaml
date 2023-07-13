@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CongoSchool.Views.ItemDetailPage"
+             Title="{Binding Item.Nom}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Modifier" Command="{Binding EditItemCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="10" Padding="15">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Nom et prenom : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14"/>
+
+            <Label Text="{Binding Item.Nom}"
+                   LineBreakMode="NoWrap"
+                   TextColor="Black" FontFamily="Bold"
+                   FontSize="14"/>
+
+            <Label Text="{Binding Item.Prenom}"
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14"
+                   FontFamily="Medium"/>
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Sexe :"
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"/>
+            <Label Text="{Binding Item.Sexe}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Date naissance : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"/>
+            <Label Text="{Binding Item.DateNaissance, StringFormat='{0:dd/MM/yyyy}'}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14"/>
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Lieu de naissance : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14"/>
+
+            <Label Text="{Binding Item.LieuNaissance}"
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontFamily="Bold"
+                   FontSize="14"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Pays de naissance : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14" />
+
+            <Label Text="{Binding Item.PaysNaissance}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14"/>
+
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Type de candidat : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14"/>
+
+            <Label Text="{Binding Item.NatureCandidat}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Examen : "
+                   LineBreakMode="NoWrap"
+                   TextColor="Black"
+                   FontSize="14" />
+            <Label Text="{Binding Item.Examen}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14" />
+            <Label Text="{Binding Item.Serie}"
+                   LineBreakMode="NoWrap"
+                   FontFamily="Bold"
+                   TextColor="Black"
+                   FontSize="14" />
+        </StackLayout>
+
+        <Image
+            IsVisible="{Binding ImageVisible}"
+            Source="{Binding Item.Image}"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HeightRequest="200" WidthRequest="200"/>
+        <Button
+            Text="Supprimer cette entree"
+            VerticalOptions="EndAndExpand"
+            BackgroundColor="Red" HorizontalOptions="End"
+            Padding="10"
+            Command="{Binding DeleteAsyncCommand}"/>
+    </StackLayout>
+    
+</ContentPage>

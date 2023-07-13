@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xct:Popup    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    Size="350, 350"
+    x:Class="CongoSchool.Views.PopupChoice">
+
+    <StackLayout Orientation="Vertical" Padding="16">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Prendre une photo"
+                    HorizontalOptions="FillAndExpand" BackgroundColor="LightSeaGreen"
+                    Clicked="Button_Clicked_1"/>
+            <Button Text="Charger une photo"
+                    HorizontalOptions="FillAndExpand" BackgroundColor="LightCoral"
+                    Clicked="Button_Clicked_2"/>
+        </StackLayout>
+        <Image x:Name="imgProfil" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="200" WidthRequest="200"/>
+        <Button Text="Annuler" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
+                Clicked="Button_Clicked" Padding="10"/>
+    </StackLayout>
+</xct:Popup>
+

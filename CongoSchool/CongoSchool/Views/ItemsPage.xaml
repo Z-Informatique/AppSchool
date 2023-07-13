@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CongoSchool.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:CongoSchool.ViewModels"  
+             xmlns:model="clr-namespace:CongoSchool.Models"
+             xmlns:helper="clr-namespace:CongoSchool.Helpers"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nouveau" Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="MaterialFont" Glyph="{x:Static helper:IconFont.PencilPlusOutline}"
+                                 Size="20"/>
+
+            </ToolbarItem.IconImageSource>
+
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <CollectionView x:Name="ItemsListView"
+                    ItemsSource="{Binding Items}"
+                    SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" x:DataType="model:Item">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="115"/>
+                                </Grid.ColumnDefinitions>
+
+                                
+                                <Label Text="Nom et prenom : "
+                                       Grid.Row="0"
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16"
+                                        TextColor="Black"/>
+
+                                <Label LineBreakMode="NoWrap"
+                                       Grid.Column="1"
+                                       TextColor="Black"
+                                       FontSize="16"
+                                       Style="{DynamicResource ListItemDetailTextStyle}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Nom}" FontAttributes="Bold" />
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding Prenom}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+
+                                <Label Text="Sexe :"
+                                       Grid.Row="1"
+                                        LineBreakMode="NoWrap" 
+                                       FontSize="14"
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        TextColor="Black"/>
+                                <Label Text="{Binding Sexe}"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       LineBreakMode="NoWrap" 
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       TextColor="Black"/>
+
+                                <Label Text="Date de naissance : "
+                                       Grid.Row="2"
+                                        LineBreakMode="NoWrap"
+                                        TextColor="Black"
+                                       FontSize="14"
+                                        Style="{DynamicResource ListItemDetailTextStyle}" />
+                                <Label Text="{Binding DateNaissance, StringFormat='{0:dd/MM/yyyy}'}"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       LineBreakMode="NoWrap"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="Black"
+                                       Style="{DynamicResource ListItemDetailTextStyle}" />
+
+                                <Label Text="Lieu de naissance : "
+                                       Grid.Row="3"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        TextColor="Black"
+                                        FontSize="14" />
+
+                                <Label Text="{Binding LieuNaissance}"
+                                       Grid.Row="3"
+                                       Grid.Column="1"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemDetailTextStyle}"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       FontSize="14" />
+
+                                 <Label Text="Pays : "
+                                        Grid.Row="4"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        TextColor="Black"
+                                        FontSize="14" />
+
+                                <Label Text="{Binding PaysNaissance}"
+                                       Grid.Row="4"
+                                       Grid.Column="1"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemDetailTextStyle}"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       FontSize="14" />
+                                
+                                <Label Text="Examen : "
+                                       Grid.Row="5"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        TextColor="Black"
+                                        FontSize="14" />
+
+                                <StackLayout Orientation="Horizontal"
+                                             Grid.Row="5" Grid.Column="1">
+
+                                    <Label Text="{Binding Examen}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontAttributes="Bold"
+                                            TextColor="Black"
+                                            FontSize="14" />
+
+                                    <Label Text="{Binding Serie}" 
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontAttributes="Bold"
+                                            TextColor="Black"
+                                            FontSize="14" />
+
+                                </StackLayout>
+
+                                <Label Text="Type de candidat : "
+                                       Grid.Row="6"
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        TextColor="Black"
+                                        FontSize="14" />
+
+                                <Label Text="{Binding NatureCandidat}"
+                                       Grid.Column="1"
+                                       Grid.Row="6"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemDetailTextStyle}"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       FontSize="14" />
+
+                                <Image Source="{Binding Image}"
+                                       Grid.RowSpan="7"
+                                       Aspect="AspectFit" HeightRequest="140" WidthRequest="140"
+                                       Grid.Column="2"/>
+
+                            </Grid>
+                            
+                            <BoxView HeightRequest="1" Color="LightGray" Margin="0,15"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+
+                    <Label
+                        Text="Aucune donnees trouvees"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="Body"/>
+
+                </CollectionView.EmptyView>
+            </CollectionView>
+
+            <StackLayout VerticalOptions="EndAndExpand"
+                         HorizontalOptions="FillAndExpand" Margin="0,15"
+                         Padding="10"
+                         IsVisible="{Binding Show}">
+                <Button
+                    Text="Envoyer les donnees en ligne"
+                    BackgroundColor="Red"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Padding="10"
+                    Command="{Binding SendData}"/>
+
+            </StackLayout>
+        </StackLayout>
+    </RefreshView>
+</ContentPage>
+

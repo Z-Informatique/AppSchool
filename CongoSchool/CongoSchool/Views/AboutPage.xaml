@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CongoSchool.Views.AboutPage"
+             xmlns:vm="clr-namespace:CongoSchool.ViewModels"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">LightGreen</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView Grid.Row="1">
+        <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+            <Label Text="Pourquoi Congo Exam ?" FontSize="Title" FontFamily="Bold" TextColor="{StaticResource Black}"/>
+            <Label Text="Cette application permettra aux différents promoteurs d'établissements, de pré-enregistrer leurs candidats aux examens d'Etat en mode offline puis de transférer les données une fois la saisie terminée." FontSize="16" Padding="0,0,0,0"/>
+            <Image Source="https://us.123rf.com/450wm/yupiramos/yupiramos1702/yupiramos170201477/71167153-set-school-supplies-icônes-vector-illustration-design.jpg"
+                       Aspect="AspectFit" WidthRequest="400" HeightRequest="400"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+

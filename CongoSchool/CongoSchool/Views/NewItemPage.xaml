@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CongoSchool.Views.NewItemPage"
+             Shell.PresentationMode="Animated"
+             Title="{Binding Titre}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="10" Padding="15">
+                <StackLayout Orientation="Vertical" IsVisible="{Binding ShowSectionImage}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Prendre une photo"
+                                Padding="10"
+                                HorizontalOptions="FillAndExpand" BackgroundColor="LightSeaGreen"
+                                Command="{Binding TakePicAsync}"/>
+                        <Button Text="Charger une photo"
+                                Padding="10"
+                                HorizontalOptions="FillAndExpand" BackgroundColor="LightCoral"
+                                Command="{Binding PicAsyncCommand}"/>
+                    </StackLayout>
+                    <Image
+                        IsVisible="{Binding ImageVisible}"
+                        Source="{Binding Image}"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="200" WidthRequest="200"/>
+                </StackLayout>
+                <Button
+                    Text="{Binding BtnTexte}"
+                    Padding="10"
+                    BackgroundColor="LightYellow"
+                    TextColor="PaleVioletRed"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding OpenCommand}"/>
+            <StackLayout Orientation="Horizontal">
+                <Picker Title="Examen"
+                            FontSize="Medium"
+                            ItemDisplayBinding="{Binding .}"
+                            ItemsSource="{Binding Examens}"
+                            SelectedItem="{Binding SelectedExamen, Mode=TwoWay}"
+                            HorizontalOptions="FillAndExpand"/>
+
+                 <Picker Title="Choisir la serie"
+                         IsVisible="{Binding ShowSerie}"
+                            FontSize="Medium"
+                            ItemDisplayBinding="{Binding .}"
+                            ItemsSource="{Binding Series}"
+                            SelectedItem="{Binding SelectedSerie, Mode=TwoWay}"
+                            HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+
+            <Picker Title="Nature du candidat"
+                    FontSize="Medium"
+                    ItemDisplayBinding="{Binding .}"
+                    ItemsSource="{Binding Natures}"
+                    SelectedItem="{Binding SelectedNature, Mode=TwoWay}"/>
+
+            <Entry Text="{Binding Nom, Mode=TwoWay}" FontSize="Medium" Placeholder="Nom" ReturnType="Next" />
+            <Entry Text="{Binding Prenom, Mode=TwoWay}" FontSize="Medium" Placeholder="Prenom" ReturnType="Next"/>
+
+            <StackLayout Orientation="Horizontal">
+                    <Picker Title="Sexe"
+                            FontSize="Medium"
+                            ItemDisplayBinding="{Binding .}"
+                            ItemsSource="{Binding Genre}"
+                            SelectedItem="{Binding SelectedGenre, Mode=TwoWay}"
+                            HorizontalOptions="FillAndExpand"/>
+                    <DatePicker Date="{Binding DateNaissance, Mode=TwoWay}" Format="dd/MM/yyyy" FontSize="Medium" />
+            </StackLayout>
+
+            <Entry Text="{Binding LieuNaissance, Mode=TwoWay}" FontSize="Medium" Placeholder="Lieu de naissance" ReturnType="Next"/>
+            <Entry Text="{Binding PaysNaissance, Mode=TwoWay}" FontSize="Medium" Placeholder="Pays naissance"/>
+            <StackLayout Orientation="Horizontal" Margin="0,20">
+                <Button Text="Annuler" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Enregistrer" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+
+            <Image x:Name="imgProfil" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="200" WidthRequest="200"/>
+        </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>
+
